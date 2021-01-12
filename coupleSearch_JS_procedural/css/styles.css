@@ -1,0 +1,94 @@
+h1{
+    width: 100%;
+    text-align: center;
+}
+
+
+#container{
+    display: inline-flex;
+    flex-direction: row;
+    width: 100%;
+}
+#board{
+
+    width: 500px;
+    height: 450px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    background-color: aqua;
+
+}
+
+#optionsDiv{
+
+    width: 30%;
+    text-align: center;
+    float: left;
+    list-style: none;
+
+}
+
+#pairsDiv{
+
+    width: 30%;
+
+
+}
+
+#pairsDiv ul{
+
+    display: block;
+    width: 100%;
+
+}
+
+#pairsDiv ul p{
+    display: grid;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+#optionsDiv ul{
+    list-style: none;
+}
+
+div ul li input[type="number"]{
+    width: 20%;
+    box-sizing: border-box;
+
+}
+
+#optionsDiv input[type="submit"]{
+    margin-top: 15px;
+
+
+}
+
+#rowsCols{
+    display: inline;
+
+
+}
+
+#warningsContainer{
+    padding-top: 1%;
+    padding-left: 1%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+
+}
+
+#warnings{
+
+    color: darkred;
+    font-size: 20px;
+    display: block;
+    margin: auto;
+}
+
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Couple Search!</title>
+
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<h1>Couple search!</h1>
+<div id="container">
+
+    <div id="pairsDiv">
+        <ul>
+            <p>
+                Couples:
+            </p>
+            <p id="couples">
+
+            </p>
+            <p>
+                Attempts:
+            </p>
+            <p id="attempts">
+
+            </p>
+        </ul>
+    </div>
+    <div id="board">
+
+    </div>
+
+    <div id="optionsDiv">
+        <div>
+            <ul>
+                <li>Difficulty:</li>
+                <li><input type="radio" id="easy" checked name="difficulty">Easy</li>
+                <li><input type="radio" id="medium" name="difficulty">Medium</li>
+                <li><input type="radio" id="hard" name="difficulty">Hard</li>
+                <li><input type="radio" id="custom" name="difficulty">Custom</li>
+            </ul>
+        </div>
+        <div id="rowsCols">
+            <ul>
+                <li>Rows:</li>
+                <li><input type="number" id="rowsInput"></li>
+            </ul>
+            <ul>
+                <li>Columns:</li>
+                <li><input type="number" id="colsInput"></li>
+                <input type="submit" value="New game!" id="newGame">
+            </ul>
+
+        </div>
+    </div>
+</div>
+<div id="warningsContainer">
+    <span id="warnings"></span>
+</div>
+
+
+</body>
+<script src="./js/script.js"></script>
+</html>
