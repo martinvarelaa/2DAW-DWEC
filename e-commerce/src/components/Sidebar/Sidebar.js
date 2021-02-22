@@ -22,17 +22,13 @@ const Sidebar = ({ open, changeView }) => {
     <Drawer
       classes={{ paper: classes.sidebar }}
       anchor="left"
-      variant="persistent"
+      variant="temporary"
       open={open}
     >
       <Box
-        
         width="100%"
         display="flex"
-        justifyContent="flex-start"
         flexDirection="row"
-        
-      
       >
         <IconButton onClick={changeView} className={classes.backButton}>
           <ChevronLeftIcon />
@@ -42,7 +38,7 @@ const Sidebar = ({ open, changeView }) => {
         </Typography>
       </Box>
       <Divider />
-      <SidebarOptionList> </SidebarOptionList>
+      <SidebarOptionList></SidebarOptionList>
     </Drawer>
   );
 };

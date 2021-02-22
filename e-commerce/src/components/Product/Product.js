@@ -19,10 +19,10 @@ const Product = ({product}) => {  //Desctructuring product from props
 
   return (
     <Card className={classes.root}>
-      <CardMedia className="" image=""></CardMedia>
+      <CardMedia  image=""></CardMedia>
       <CardContent>
       <Typography variant="h5" gutterBottom>
-            {product.title}
+            {product.name}
           </Typography>
         <div className={classes.cardContent}>
 

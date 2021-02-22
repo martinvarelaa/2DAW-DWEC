@@ -6,6 +6,7 @@ import ContactMailIcon from "@material-ui/icons/ContactMail";
 import InfoIcon from "@material-ui/icons/Info";
 import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
 import { NavLink } from "react-router-dom";
+import useStyles from './styles';
 
 let sidebarOptionsArray = [
   { Home: [ <HomeIcon></HomeIcon>,
@@ -23,7 +24,9 @@ let sidebarOptionsArray = [
 
 
 const SidebarOptionList = ({ handleView }) => {
-
+  
+  const classes = useStyles();
+  
   return (
 
     
@@ -33,7 +36,7 @@ const SidebarOptionList = ({ handleView }) => {
       
           
       sidebarOptionsArray.map((object, index) => (
-         <NavLink to={Object.values(object)[0][1]} > 
+         <NavLink className={classes.listElement}  to={Object.values(object)[0][1]} > 
           <ListItem button key={index} onClick={handleView}>
             <ListItemIcon>{Object.values(object)[0][0]}</ListItemIcon>
             <ListItemText primary={Object.keys(object)} />

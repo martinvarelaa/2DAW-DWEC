@@ -1,30 +1,29 @@
 import {makeStyles} from '@material-ui/core';
 
-export default makeStyles( (theme) => ({
+export default makeStyles( () => ({
+
       sidebar : {
-        width : 200
+        width : "20vh",
+        minWidth: "150px"
       },
       username : {
           alignSelf: 'center',
-          marginLeft: '35%',
-          marginTop: '2%',
-          
-          
-          
-          
+          marginLeft: '17%',
+          height :'35%',
           
       },
       backButton : {
+
           width : '10%',
           height :'10%',
           alignSelf: 'center',
           marginLeft: '8%'
           
-          
       },
-      sidebarHeaderSpacing : {
-        padding : theme.spacing(1),
-        
+      listElement :{
+        textDecoration : 'none',
+        color: 'black',
+             
       }
       
 }));
