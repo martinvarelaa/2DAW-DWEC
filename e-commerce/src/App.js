@@ -2,8 +2,9 @@ import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Route, Switch, NavLink, Link } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Products from './components/Products/Products'
+import Products from './components/Products'
 import Footer from './components/Footer';
+import Login from './components/Login';
 import { Container } from '@material-ui/core'
 
 import useStyles from './styles'
@@ -26,6 +27,9 @@ const App = () => {
           <Products />
         </Route>
         <Route exact path="/contact">
+        </Route>
+        <Route exact path="/login">
+          <Login></Login>
         </Route>
       </Switch>
 

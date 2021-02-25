@@ -10,19 +10,11 @@ import {
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-
 import useStyles from "./styles";
 import Sidebar from "../Sidebar/Sidebar";
 
 const Navbar = ({}) => {
-
- 
-
   const classes = useStyles();
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const [open, setOpen] = React.useState(false);
 
