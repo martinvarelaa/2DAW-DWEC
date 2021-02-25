@@ -10,15 +10,15 @@ import useStyles from './styles';
 
 let sidebarOptionsArray = [
   { Home: [ <HomeIcon></HomeIcon>,
-             '/home'] },
+            '/home'] },
   { Products: [ <EuroSymbolIcon></EuroSymbolIcon>,
             '/products'] },
   { Contact: [<ContactMailIcon></ContactMailIcon>,
-                 '/contact'] },
+                '/contact'] },
   { Sellers: [<AlternateEmailIcon></AlternateEmailIcon>,
                 '/sellers'] },
   { About: [ <InfoIcon></InfoIcon>,
-                 '/about'] },
+                '/about'] },
 ];
 
 
@@ -36,8 +36,8 @@ const SidebarOptionList = ({ handleView }) => {
       
           
       sidebarOptionsArray.map((object, index) => (
-         <NavLink className={classes.listElement}  to={Object.values(object)[0][1]} > 
-          <ListItem button key={index} onClick={handleView}>
+        <NavLink key={index} className={classes.listElement}  to={Object.values(object)[0][1]} > 
+          <ListItem button  onClick={handleView}>
             <ListItemIcon>{Object.values(object)[0][0]}</ListItemIcon>
             <ListItemText primary={Object.keys(object)} />
           </ListItem>

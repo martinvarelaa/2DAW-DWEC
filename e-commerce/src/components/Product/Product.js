@@ -15,20 +15,20 @@ import useStyles from './styles';
 const Product = ({product}) => {  //Desctructuring product from props
   
   const classes = useStyles();
-
+  console.log(product);
 
   return (
     <Card className={classes.root}>
-      <CardMedia  image=""></CardMedia>
       <CardContent>
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" gutterBottom className={classes.title}>
             {product.name}
           </Typography>
+          <CardMedia component="img" src={product.url} className={classes.img}></CardMedia>
         <div className={classes.cardContent}>
 
           <Typography variant="h6">{product.price}</Typography>
         </div>
-        <Typography variant="h6" color="textSecondary">
+        <Typography variant="h6" color="textSecondary" className={classes.description}>
           {product.description}
         </Typography>
         <CardActions disableSpacing className={classes.cardActions}>

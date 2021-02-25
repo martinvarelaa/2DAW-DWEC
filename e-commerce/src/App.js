@@ -1,34 +1,39 @@
 import React from 'react'
-import { BrowserRouter as Router }  from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { Route, Switch, NavLink, Link } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Products from './components/Products/Products'
-import Sidebar from './components/Sidebar/Sidebar'
+import Footer from './components/Footer';
+import { Container } from '@material-ui/core'
+
+import useStyles from './styles'
 
 
 
 
 const App = () => {
-    return (
-       
-        <Router>
-            <Navbar></Navbar>
-            
-        <Switch>
-          <Route exact path="/home">
-            
-          </Route>
-          <Route path="/products">
-            <Products/>
-          </Route>
-          <Route path="/contact">
-            
-          </Route>
-        </Switch>
-     
-    </Router>
 
-    )
+  const classes = useStyles();
+
+  return (
+    <Router>
+      <Navbar></Navbar>
+      <Container className={classes.root}>
+      <Switch>
+        <Route exact path="/home">
+        </Route>
+        <Route exact path="/products">
+          <Products />
+        </Route>
+        <Route exact path="/contact">
+        </Route>
+      </Switch>
+
+      </Container>
+      
+      <Footer></Footer>
+    </Router>
+  );
 }
 
-export default App
+export default App;
