@@ -36,7 +36,7 @@ const Products = () => {
 
         <main className={classes.content}>
             <div className={classes.toolbar}></div>
-            <Grid container justify="center" spacing={4}  >
+            <Grid container justify="space-around" spacing={4} >
                 {
                     
                     products.map((product , index) => (

@@ -7,7 +7,7 @@ import {
   IconButton,
   Typography,
 } from "@material-ui/core";
-import { AddShoppingCart } from "@material-ui/icons";
+import { AddShoppingCart } from "@material-ui/icons"; 
 
 
 import useStyles from './styles';
@@ -20,15 +20,15 @@ const Product = ({product}) => {  //Desctructuring product from props
   return (
     <Card className={classes.root}>
       <CardContent>
-      <Typography variant="h5" gutterBottom className={classes.title}>
+      <Typography xs={12} variant="h5" gutterBottom className={classes.title}>
             {product.name}
           </Typography>
           <CardMedia component="img" src={product.url} className={classes.img}></CardMedia>
         <div className={classes.cardContent}>
 
-          <Typography variant="h6">{product.price}</Typography>
+          <Typography variant="h6" className={classes.price}>{product.price}</Typography>
         </div>
-        <Typography variant="h6" color="textSecondary" className={classes.description}>
+        <Typography xs={12} variant="h6" color="textSecondary" className={classes.description}>
           {product.description}
         </Typography>
         <CardActions disableSpacing className={classes.cardActions}>

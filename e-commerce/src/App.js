@@ -5,6 +5,8 @@ import Navbar from './components/Navbar'
 import Products from './components/Products'
 import Footer from './components/Footer';
 import Login from './components/Login';
+import Register from './components/Register'
+import ContactForm from './components/ContactForm'
 import { Container } from '@material-ui/core'
 
 import useStyles from './styles'
@@ -27,9 +29,13 @@ const App = () => {
           <Products />
         </Route>
         <Route exact path="/contact">
+          <ContactForm></ContactForm>
         </Route>
         <Route exact path="/login">
           <Login></Login>
+        </Route>
+        <Route exact path="/register">
+          <Register></Register>
         </Route>
       </Switch>
 

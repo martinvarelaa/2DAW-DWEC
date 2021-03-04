@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import {
   Toolbar,
@@ -16,7 +16,10 @@ import Sidebar from "../Sidebar/Sidebar";
 const Navbar = ({}) => {
   const classes = useStyles();
 
-  const [open, setOpen] = React.useState(false);
+
+  const [loggedIn, setLoggedIn] = useState();
+
+  const [open, setOpen] = useState(false);
 
   const changeView = () => {
     setOpen(!open);

@@ -1,37 +1,66 @@
 
 import { Container } from '@material-ui/core';
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import useStyles from './styles';
-
+import {auth} from '../../lib/firebase';
 import {TextField, FormControlLabel, Checkbox, Grid, Button, Link } from '@material-ui/core';
+import { Redirect } from 'react-router-dom';
 
 
 
 const Login = () => {
 
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const [loggedIn, setLoggedIn] = useState(false);
 
+    const [formInput, setFormInput] = useReducer(
+        (state, newState) => ({ ...state, ...newState })
+      );
+
+    const onSubmit = (evt)=>{
+        evt.preventDefault();
+        auth.signInWithEmailAndPassword(formInput.email, formInput.password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          setLoggedIn(true);
+         
+
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    }
+
+    const handleSubmit = (evt)=>{
+        const name = evt.target.name;
+        const value = evt.target.value;
+
+        setFormInput({[name]: value});
+
+    }
     const classes = useStyles();
 
+
+    
 
 
     return (
         <Container className={classes.content} >
             <div className={classes.toolbar}></div>
-            <form className={classes.form} noValidate>
+            <form onSubmit={onSubmit}>
                 <TextField
-                    variant="filled"
+                    variant="standard"
                     margin="normal"
                     required
                     fullWidth
-                    id="username"
-                    label="Username"
-                    name="username"
+                    id="email"
+                    label="Email"
+                    name="email"
                     autoFocus
+                    onChange={handleSubmit}
                 />
                 <TextField
-                    variant="filled"
+                    variant="standard"
                     margin="normal"
                     required
                     fullWidth
@@ -39,31 +68,36 @@ const Login = () => {
                     label="Password"
                     type="password"
                     id="password"
-                    autoComplete="current-password"
+                    onChange={handleSubmit}
+
                 />
                 <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}
                     label="Remember me"
-                    classeName={classes.control}
                 />
                 <Button
                     type="submit"
-                    
                     variant="contained"
                     color="inherit"
-                    className={classes.submit}
                 >
                     Sign In
                 </Button>
                 <Grid container>
                     <Grid item>
-                        <Link href="#" variant="body2">
+                        <Link href="/register" variant="body2">
                             {"Sing Up"}
                         </Link>
                     </Grid>
                 </Grid>
             </form>
+            {loggedIn && (
+          <Redirect to="/home"/>
+        )}
         </Container>
+        
+        
+        
+
     )
 }
 

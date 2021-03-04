@@ -3,7 +3,9 @@ import {makeStyles} from '@material-ui/core';
 
 export default makeStyles( () => ({
     root : {
-        maxWidth : '100%',
+        
+        height: '20rem',
+        
     }, 
     cardActions: {
         display : 'flex',
@@ -13,16 +15,19 @@ export default makeStyles( () => ({
         display : 'flex',
         justifyContent: 'space-evenly',
     },
-    img:{
-        width: "50%",
-        margin: 'auto'
+    img:{ 
+        margin: 'auto',
+        width: "10vh",
+        height: "10vh"
     },
     title:{
-        margin: 'auto',
-        width: '50%'
+        textAlign: "center"
     },
     description:{
         textAlign:'center'
-        }
+    },
+    price:{
+        margin: "20px "
+    }
 }));
 
