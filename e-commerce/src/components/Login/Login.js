@@ -8,26 +8,31 @@ import { Redirect } from 'react-router-dom';
 
 
 
+
 const Login = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
 
     const [formInput, setFormInput] = useReducer(
         (state, newState) => ({ ...state, ...newState })
-      );
+    );
 
     const onSubmit = (evt)=>{
         evt.preventDefault();
         auth.signInWithEmailAndPassword(formInput.email, formInput.password)
         .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          setLoggedIn(true);
-         
+
+        
+        const user = userCredential.user;
+        localStorage.setItem('currentUser', user.displayName);
+        localStorage.setItem('currentUserData', JSON.stringify(user));
+        localStorage.setItem('userCart', JSON.stringify([]));
+        setLoggedIn(true);
+        
 
         })
         .catch((error) => {
-          console.log(error.message);
+            console.log(error.message);
         });
     }
 
@@ -40,9 +45,8 @@ const Login = () => {
     }
     const classes = useStyles();
 
-
     
-
+    
 
     return (
         <Container className={classes.content} >
@@ -91,13 +95,10 @@ const Login = () => {
                 </Grid>
             </form>
             {loggedIn && (
-          <Redirect to="/home"/>
+        <Redirect to="/home"/>
         )}
         </Container>
-        
-        
-        
-
+    
     )
 }
 

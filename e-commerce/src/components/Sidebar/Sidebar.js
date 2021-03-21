@@ -5,19 +5,24 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import SidebarOptionList from "./sidebarOptionList";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeftTwoTone";
 
 import useStyles from "./styles";
 
 const Sidebar = ({ open, changeView }) => {
+
+  const [username, setUsername] = useState(null);
+
+  useEffect(() => { setUsername(localStorage.getItem('currentUser')) });
+
   const classes = useStyles();
 
   if (!open) {
     return null;
   }
-
+  
   return (
     <Drawer
       classes={{ paper: classes.sidebar }}
@@ -34,11 +39,11 @@ const Sidebar = ({ open, changeView }) => {
           <ChevronLeftIcon />
         </IconButton>
         <Typography justify="center" className={classes.username}>
-          Username
+          {username ? username : "Anonimo"}
         </Typography>
       </Box>
       <Divider />
-      <SidebarOptionList></SidebarOptionList>
+      <SidebarOptionList handleView={changeView}></SidebarOptionList>
     </Drawer>
   );
 };

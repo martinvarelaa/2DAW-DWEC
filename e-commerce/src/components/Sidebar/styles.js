@@ -23,7 +23,10 @@ export default makeStyles( () => ({
       listElement :{
         textDecoration : 'none',
         color: 'black',
-             
+            
+      },
+      icons:{
+        color:'black'
       }
       
 }));

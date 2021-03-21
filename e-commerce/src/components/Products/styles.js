@@ -8,6 +8,12 @@ export default makeStyles( (theme) =>({
         
         padding : theme.spacing(2)
         
+    },
+    grid:{
+        marginBottom: '2rem',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center'
     }
     
 

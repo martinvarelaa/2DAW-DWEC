@@ -1,47 +1,57 @@
-import React, { useReducer} from "react";
-import { TextField, Container, Button, Grid, Link } from "@material-ui/core";
+import React, { useReducer, useState } from "react";
+import { TextField, Container, Button, Grid, Link, Typography } from "@material-ui/core";
 import { auth } from "../../lib/firebase";
 import useStyles from "./styles";
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const Register = () => {
+
+  const [successOnRegister, setSuccessOnregister] = useState(false);
 
   const [formInput, setFormInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
       email: "",
-      password: ""
+      password: "",
+      displayName: "",
     }
   );
 
 
   const onSubmit = (evt) => {
 
-        evt.preventDefault();
+    evt.preventDefault();
 
-      if(formInput.password === formInput.repeatPassword){
+    if (formInput.password === formInput.repeatPassword) {
 
-        auth.createUserWithEmailAndPassword(formInput.email, formInput.password)
-        .then((userCredential) => { 
-          
-        const user = userCredential.user;
+      auth.createUserWithEmailAndPassword(formInput.email, formInput.password)
+        .then((userCredential) => {
 
-        if(user){
-            return <Redirect to="/login"/>
-        }
+
+          userCredential.user.updateProfile({
+            displayName: formInput.displayName
+          })
+
+          const user = userCredential.user;
+
+
+          if (user) {
+            setSuccessOnregister(true);
+          }
 
         })
         .catch((error) => {
 
-        console.log(error.code, error.message);
+          console.log(error.code, error.message);
 
         });
-      }else{
-        console.log('Passwords dont match!');
-      }        
-   
+
+    } else {
+      return <Typography>Passwords dont match!</Typography>
     }
-    
+
+  }
+
 
   const classes = useStyles();
 
@@ -49,7 +59,7 @@ const Register = () => {
 
     const name = evt.target.name;
     const newValue = evt.target.value;
-    
+
     setFormInput({ [name]: newValue });
 
   };
@@ -64,9 +74,21 @@ const Register = () => {
             margin="normal"
             required
             fullWidth
+            id="displayName"
+            label="Username"
+            name="displayName"
+            onChange={handleInput}
+            type="text"
+          />
+          <TextField
+            variant="filled"
+            margin="normal"
+            required
+            fullWidth
             id="email"
             label="email"
             name="email"
+            type="email"
             onChange={handleInput}
           />
           <TextField
@@ -97,7 +119,7 @@ const Register = () => {
             variant="contained"
             color="inherit"
             className={classes.submit}
-            
+
           >
             Register!
           </Button>
@@ -110,7 +132,11 @@ const Register = () => {
           </Grid>
         </form>
       </Container>
+      {successOnRegister && (
+        <Redirect to="/login"></Redirect>
+      )}
     </div>
+
   );
 };
 
